@@ -12,6 +12,14 @@ const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'];
 // Load credentials from a file
 app.use(cors());
 app.use(express.json());
+__dirname = path.resolve();
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '/fe/build')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'fe', 'build', 'index.html'));
+    })
+}
 const credentials = JSON.parse(fs.readFileSync('cred.json'));
 
 // Extract the necessary credentials
@@ -31,14 +39,6 @@ const authUrl = oAuth2Client.generateAuthUrl({
     scope: SCOPES,
 });
 
-__dirname = path.resolve();
-
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '/fe/build')));
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'fe', 'build', 'index.html'));
-    })
-}
 
 app.get('/auth', (req, res) => {
     res.json({ success: true, error: false, type: 'success', data: authUrl });
