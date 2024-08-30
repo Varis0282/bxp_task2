@@ -31,7 +31,7 @@ const authUrl = oAuth2Client.generateAuthUrl({
 });
 
 
-app.get('/', (req, res) => {
+app.get('/auth', (req, res) => {
     res.json({ success: true, error: false, type: 'success', data: authUrl });
 });
 
