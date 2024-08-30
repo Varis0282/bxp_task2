@@ -17,7 +17,7 @@ const Home = () => {
       const popupHeight = 400;
       const left = (window.screen.width / 2) - (popupWidth / 2);
       const top = (window.screen.height / 2) - (popupHeight / 2);
-      const popup = window.open(data.data, '_blank', `width=${popupWidth},height=${popupHeight},top=${top},left=${left}`);
+      const popup = window.open(data.data, '_blank');
       setOpen(true)
 
       const checkPopupClosed = setInterval(() => {
