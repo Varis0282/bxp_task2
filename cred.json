@@ -1,0 +1,11 @@
+{
+  "installed": {
+    "client_id": "599310655528-ft4j7vu8q0b02jam7gcctgh1ghlap07p.apps.googleusercontent.com",
+    "project_id": "tetsing-434012",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "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",
+    "redirect_uris": ["http://localhost:4000/oauth2callback"]
+  }
+}
