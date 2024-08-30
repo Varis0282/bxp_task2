@@ -12,7 +12,7 @@ const Home = () => {
 
   const handleAuthorize = async () => {
     try {
-      const { data } = await axios.get(`${BaseURL}/`);
+      const { data } = await axios.get(`${BaseURL}/auth`);
       const popupWidth = 600;
       const popupHeight = 400;
       const left = (window.screen.width / 2) - (popupWidth / 2);
