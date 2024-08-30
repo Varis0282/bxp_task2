@@ -12,7 +12,7 @@ const Home = () => {
 
   const handleAuthorize = async () => {
     try {
-      const { data } = await axios.get(`${BaseURL}/auth`);
+      const { data } = await axios.get(`/auth`);
       const popupWidth = 600;
       const popupHeight = 400;
       const left = (window.screen.width / 2) - (popupWidth / 2);
@@ -37,7 +37,7 @@ const Home = () => {
 
   const getEmails = async () => {
     try {
-      const { data } = await axios.get(`${BaseURL}/emails`);
+      const { data } = await axios.get(`/emails`);
       if (data.success) {
         console.log("🚀 => data.data:", data.data);
         setEmails(data.data)
@@ -49,7 +49,7 @@ const Home = () => {
   }
   const checkAuth = async () => {
     try {
-      const { data } = await axios.get(`${BaseURL}/authorized`);
+      const { data } = await axios.get(`/authorized`);
       console.log("🚀 => data:", data);
       if (data.data) {
         setAuthorized(true)
