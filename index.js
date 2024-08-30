@@ -3,6 +3,7 @@ const { OAuth2Client } = require('google-auth-library');
 const { google } = require('googleapis');
 const fs = require('fs');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const port = 4000;
@@ -30,6 +31,14 @@ const authUrl = oAuth2Client.generateAuthUrl({
     scope: SCOPES,
 });
 
+__dirname = path.resolve();
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '/fe/build')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'fe', 'build', 'index.html'));
+    })
+}
 
 app.get('/auth', (req, res) => {
     res.json({ success: true, error: false, type: 'success', data: authUrl });
